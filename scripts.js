@@ -74,7 +74,7 @@ function changeCurrency() {
 
     if (currencySelect.value == "FrancoSuico") {
         currencyName.innerHTML = "Franco Suiço"
-        currencyImg.src = "./assents/francosuico.png"
+        currencyImg.src = "./assents/francoSuico.png"
     }
     convertValues()
 }
