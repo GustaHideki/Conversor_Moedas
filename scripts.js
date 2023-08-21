@@ -1,88 +1,58 @@
-const convertButton = document.querySelector(".convertButton") //seleciona o botao com a classe: "convertButton" no arquivo html 
-const currencySelect = document.querySelector(".currency-select")
 
-function convertValues() {
-    const inputCurrencyValue = document.querySelector(".input-currency").value // seleciona o input: "input-currency" no html e cria uma variavel com o nome:"inputCurrencyValue"
-
-    const currencyValueToConvert = document.querySelector(".currency-Value-To-Convert")
-
-    const currencyValueConverted = document.querySelector(".currency-Value")
+const buttunConvert = document.querySelector(".button")
+const currencySelect = document.querySelector(".selectCurrency")
 
 
-    const dolarToday = 4.90 // cria uma variavel que define um valor para moeda dolar
-    const euroToday = 5.39 // cria uma variavel que define um valor para moeda euro
-    const ieneToday = 0.035
-    const francoSuicoToday = 5.59
+const convertValues = async () => {
+    const inputValue = document.querySelector(".inputValue").value
+    const valueBr = document.querySelector(".valueBr")
+    const valueCurrency = document.querySelector(".valueCurrency")
 
+
+const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL").then(response => response.json())
+
+const dolarValue = data.USDBRL.high
+const euroValue = data.EURBRL.high
 
     if (currencySelect.value == "dolar") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+        valueCurrency.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
-        }).format(inputCurrencyValue / dolarToday)
-
+        }).format(inputValue / dolarValue)
     }
 
     if (currencySelect.value == "euro") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+        valueCurrency.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
-        }).format(inputCurrencyValue / euroToday)
+        }).format(inputValue / euroValue)
     }
 
-    if (currencySelect.value == "iene") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("ja-JP", {
-            style: "currency",
-            currency: "JPY"
-        }).format(inputCurrencyValue / ieneToday)
-    }
-
-    if (currencySelect.value == "FrancoSuico") {
-
-        currencyValueConverted.innerHTML = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(inputCurrencyValue / francoSuicoToday)
-
-    }
-
-    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+    valueBr.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
-    }).format(inputCurrencyValue)
+    }).format(inputValue)
 
-
-    console.log(convertedValue) //  Mostra o valor da operação realizada no console.log
 }
 
-function changeCurrency() {
-    const currencyName = document.getElementById("currency-name")
-    const currencyImg = document.querySelector(".currency-img")
+const changeCurrency = ()=>{
+    const nameCurrency = document.querySelector(".nameCurrency")
+    const imageCurrency = document.querySelector(".imageCurrency")
 
-    if (currencySelect.value == "dolar") {
-
-        currencyName.innerHTML = "Dólar Americano"
-        currencyImg.src = "./assents/dolar.png"
-    }
-    if (currencySelect.value == "euro") {
-
-        currencyName.innerHTML = "Euro"
-        currencyImg.src = "./assents/euro.png"
+    if(currencySelect.value == "dolar"){
+        nameCurrency.innerHTML = "Dólar Americano"
+        imageCurrency.src = "./assents/dolar.png"
     }
 
-    if (currencySelect.value == "iene") {
-        currencyName.innerHTML = "Iene Japonês"
-        currencyImg.src = "./assents/iene.png"
+    if(currencySelect.value == "euro"){
+        nameCurrency.innerHTML = "Euro"
+        imageCurrency.src = "./assents/euro.png"
     }
 
-    if (currencySelect.value == "FrancoSuico") {
-        currencyName.innerHTML = "Franco Suiço"
-        currencyImg.src = "./assents/francoSuico.png"
-    }
     convertValues()
+
 }
 
 
-currencySelect.addEventListener("change", changeCurrency)
-
-convertButton.addEventListener("click", convertValues) // mostra o evento "click" do button 
-
-
-
+currencySelect.addEventListener('change', changeCurrency)
+buttunConvert.addEventListener('click', convertValues)
