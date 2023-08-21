@@ -1,83 +1,84 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-body {
-    background-color: #772FD3;
+
+body{
+    background-color:#8a51fc;
+    padding-bottom: 20px;
 }
 
-.logo {
-    height: 200px;
-    width: 200px;
-    display: block;
-    margin: 20px auto 0 auto;
-}
-
-.caixa-1 {
-    width: 375px;
-    height: 690px;
-    background-color: aliceblue;
-    border-radius: 15px;
-    display: block;
-    margin: 20px auto 0 auto;
-}
-
-label {
-    color: #777777;
-    font-size: 14px;
-}
-
-
-.moeda {
-    margin-left: 10px;
-    margin-bottom: 15px;
-}
-
-select,
-input {
-    width: 327px;
-    height: 48px;
-    border: none;
-    appearance: none;
-    background-color: aliceblue;
-    border-radius: 5px;
-}
-
-button {
-    display: block;
-    margin: 15px auto 0 auto;
-    width: 327px;
-    height: 48px;
-    background-color: #772FD3;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.imagem {
+.logo{
     display: block;
     margin: 20px auto;
-
 }
 
-.borda {
-    border: 1px solid #772FD3;
-    border-radius: 10px;
-    margin: 20px;
-}
-
-.alinhar {
+main{
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    width: 350px;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+label{
+    margin: 15px 0;
+}
+
+select{
+    height: 48px;
+    width: 100%;
+    border: none;
+    background-color: rgb(194, 189, 189);
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5px;
+    appearance: none;
+}
+
+input{
+    height: 48px;
+    width: 100%;
+    border: none;
+    background-color: rgb(194, 189, 189);
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5px;
+}
+
+button{
+    height: 48px;
+    background-color: #8a51fc;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 18px;
+}
+
+.flags{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 0;
+    justify-content: center;
+    border: 1px solid #8a51fc;
+    border-radius: 15px;
+    padding: 20px;
+    gap: 10px;
 }
+   .flags p{
+    font-size: 18px;
+    font-weight: 700;
+    color: gray;
+   }
